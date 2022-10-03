@@ -1,0 +1,539 @@
+{
+	"info": {
+		"_postman_id": "ca33d5a4-4828-4851-ba40-2fdc0fa12adb",
+		"name": "Qwentes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"l.rossi@gmail.com\",\n    \"password\": \"Zaq12wsx%$\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"givenName\": \"Mario\",\n  \"familyName\": \"Rossi\",\n  \"email\": \"mario3s@example.com\",\n  \"dateOfBirth\": \"1951-04-06\",\n  \"password\": \"Zaq12wsx%$\",\n  \"address\": {\n      \"street\": \"prova\",\n      \"city\": \"milano\",\n      \"postalCode\": \"20100\",\n      \"countryCode\": \"IT\",\n      \"coordinates\" : {\n          \"lat\": \"22\",\n          \"lng\": \"11\"\n      }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users/l.rossi@gmail.com",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"l.rossi@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Search All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users?sort[]=%2BdateOfBirth&email[]=l.rossi@gmail.com&email[]=mario13@example.com&page=1&perPage=100",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "sort[]",
+							"value": "%2BdateOfBirth"
+						},
+						{
+							"key": "sort[]",
+							"value": "-dateOfBirth",
+							"disabled": true
+						},
+						{
+							"key": "countryCode[]",
+							"value": "IT",
+							"disabled": true
+						},
+						{
+							"key": "countryCode[]",
+							"value": "ES",
+							"disabled": true
+						},
+						{
+							"key": "email[]",
+							"value": "l.rossi@gmail.com"
+						},
+						{
+							"key": "email[]",
+							"value": "mario13@example.com"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "perPage",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/posts?q=xxx&tags[]=nodejs&tags[]=express&page=1&perPage=100",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "xxx"
+						},
+						{
+							"key": "tags[]",
+							"value": "nodejs"
+						},
+						{
+							"key": "tags[]",
+							"value": "express"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "perPage",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"givenName\": \"Mario\",\n  \"familyName\": \"Rossi\",\n  \"email\": \"mario.rossi@example.com\",\n  \"dateOfBirth\": \"1951-04-05\",\n  \"password\": \"marioZaq12wsx%$\",\n  \"address\": {\n      \"street\": \"prova\",\n      \"city\": \"milano\",\n      \"postalCode\": \"20100\",\n      \"countryCode\": \"IT\",\n      \"coordinates\" : {\n          \"lat\": \"22\",\n          \"lng\": \"11\"\n      }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"ffff\",\n  \"body\": \"xxx ccc eee\",\n  \"status\": \"offline\",\n  \"tags\": [\n    \"nodejs\",\n    \"aaa\",\n    \"sss\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/posts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/posts/53018a4a-2357-4e9b-b1aa-59507bdafb10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"53018a4a-2357-4e9b-b1aa-59507bdafb10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"stringssd\",\n  \"body\": \"string\",\n  \"status\": \"online\",\n  \"tags\": [\n    \"sssssss\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/posts/53018a4a-2357-4e9b-b1aa-59507bdafb10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"53018a4a-2357-4e9b-b1aa-59507bdafb10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTHVjYSBSb3NzaSIsImVtYWlsIjoibC5yb3NzaUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiTHVjYSIsImZhbWlseV9uYW1lIjoiUm9zc2kiLCJleHAiOiIxNjY0NzkwMzc3IiwiaWF0IjoiMTY2NDc4Njc3NyJ9.DtZQnRt4EWjGebuqs0jrBQNoGyEVkyRolGzqMfXNTUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"givenName\": \"Luca\",\n  \"familyName\": \"Rossi\",\n  \"email\": \"prova@example.com\",\n  \"dateOfBirth\": \"1951-04-12\",\n  \"address\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users/l.rossi@gmail.com",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"l.rossi@gmail.com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
